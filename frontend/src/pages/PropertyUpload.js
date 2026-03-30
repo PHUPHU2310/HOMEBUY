@@ -178,7 +178,7 @@ function PropertyUpload() {
             <legend>{t('upload.basicInfo')}</legend>
 
             <div className="form-group">
-              <label>{t('upload.title')} *</label>
+              <label>{t('upload.formTitle')} *</label>
               <input
                 type="text"
                 name="title"

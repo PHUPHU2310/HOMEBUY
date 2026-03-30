@@ -153,7 +153,51 @@
   }
 }
 
+.contact-map {
+  padding: 60px 20px;
+  background-color: white;
+}
+
+.contact-map .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-map h2 {
+  color: #1b7c38;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.map-container {
+  width: 100%;
+  height: 500px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 @media (max-width: 768px) {
+  .map-container {
+    height: 350px;
+  }
+
+  .contact-map h2 {
+    font-size: 22px;
+  }
+
+  .contact-map {
+    padding: 40px 20px;
+  }
+
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 40px;

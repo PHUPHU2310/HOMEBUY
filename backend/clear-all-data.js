@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
 const Property = require('./models/Property');
+const Transaction = require('./models/Transaction');
+const User = require('./models/User');
 
 require('dotenv').config();
 
@@ -12,9 +14,9 @@ if (!fs.existsSync(BACKUP_DIR)) {
   fs.mkdirSync(BACKUP_DIR, { recursive: true });
 }
 
-const clearProperties = async () => {
+const clearDatabase = async () => {
   try {
-    console.log('\n⚠️  CẢNH BÁO: BẠN CHUẨN BỊ XÓA TẤT CẢ BẤT ĐỘNG SẢN!');
+    console.log('\n⚠️  CẢNH BÁO: BẠN CHUẨN BỊ XÓA TẤT CẢ DỮ LIỆU!');
     console.log('========================================');
     
     // Connect to MongoDB
@@ -23,29 +25,39 @@ const clearProperties = async () => {
       useUnifiedTopology: true,
     });
 
-    // Get count before deletion
+    // Get counts before deletion
     const propertyCount = await Property.countDocuments();
+    const transactionCount = await Transaction.countDocuments();
+    const userCount = await User.countDocuments();
 
     console.log('\n📊 Dữ liệu hiện tại:');
     console.log(`   - Bất động sản: ${propertyCount}`);
+    console.log(`   - Giao dịch: ${transactionCount}`);
+    console.log(`   - Người dùng: ${userCount}`);
 
     // Create backup before deletion
     console.log('\n💾 Đang tạo backup dữ liệu...');
     
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const backupFile = path.join(BACKUP_DIR, `backup-properties-${timestamp}.json`);
+    const backupFile = path.join(BACKUP_DIR, `backup-${timestamp}.json`);
     
     const backup = {
       timestamp: new Date().toISOString(),
       properties: await Property.find(),
-      count: propertyCount
+      transactions: await Transaction.find(),
+      users: await User.find(),
+      counts: {
+        properties: propertyCount,
+        transactions: transactionCount,
+        users: userCount
+      }
     };
 
     fs.writeFileSync(backupFile, JSON.stringify(backup, null, 2));
     console.log(`✓ Backup saved: ${backupFile}`);
 
     // Ask for confirmation
-    console.log('\n❌ Nhập "DELETE_PROPERTIES" để xác nhận xóa tất cả bất động sản:');
+    console.log('\n❌ Nhập "DELETE_ALL" để xác nhận xóa tất cả dữ liệu:');
     
     const readline = require('readline');
     const rl = readline.createInterface({
@@ -56,34 +68,45 @@ const clearProperties = async () => {
     rl.question('Xác nhận: ', async (answer) => {
       rl.close();
 
-      if (answer !== 'DELETE_PROPERTIES') {
+      if (answer !== 'DELETE_ALL') {
         console.log('\n✓ Đã hủy. Dữ liệu được giữ nguyên.');
         process.exit(0);
       }
 
-      // Delete all properties
-      console.log('\n🗑️  Đang xóa bất động sản...');
+      // Delete all data
+      console.log('\n🗑️  Đang xóa dữ liệu...');
 
-      const result = await Property.deleteMany({});
-      console.log(`✓ Đã xóa ${result.deletedCount} bất động sản`);
+      const propertyResult = await Property.deleteMany({});
+      console.log(`✓ Đã xóa ${propertyResult.deletedCount} bất động sản`);
+
+      const transactionResult = await Transaction.deleteMany({});
+      console.log(`✓ Đã xóa ${transactionResult.deletedCount} giao dịch`);
+
+      const userResult = await User.deleteMany({});
+      console.log(`✓ Đã xóa ${userResult.deletedCount} người dùng`);
 
       // Log the deletion
-      const logFile = path.join(BACKUP_DIR, `deletion-log-properties-${timestamp}.txt`);
+      const logFile = path.join(BACKUP_DIR, `deletion-log-${timestamp}.txt`);
       const logContent = `
-Deletion Log - Properties
-=========================
+Deletion Log
+============
 Thời gian: ${new Date().toISOString()}
 
-Xóa: ${result.deletedCount} bất động sản
+Xóa:
+- ${propertyResult.deletedCount} bất động sản
+- ${transactionResult.deletedCount} giao dịch
+- ${userResult.deletedCount} người dùng
 
 Backup được lưu tại: ${backupFile}
       `.trim();
 
       fs.writeFileSync(logFile, logContent);
       
-      console.log('\n✅ Xóa bất động sản thành công!');
+      console.log('\n✅ Xóa tất cả dữ liệu thành công!');
       console.log(`📝 Log file: ${logFile}`);
       console.log(`💾 Backup file: ${backupFile}`);
+      console.log('\n⚡ Để khôi phục dữ liệu, chạy:');
+      console.log(`   node restore-database.js ${backupFile}`);
 
       process.exit(0);
     });
@@ -93,4 +116,4 @@ Backup được lưu tại: ${backupFile}
   }
 };
 
-clearProperties();
+clearDatabase();

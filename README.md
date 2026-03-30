@@ -242,6 +242,49 @@ NODE_ENV=development
 - Smooth animations and transitions
 - Professional typography
 
+## 🗄️ Database Management
+
+The backend includes safe database cleanup and recovery tools with automatic backups.
+
+### Quick Guide
+
+| Command | Effect | Risk Level |
+|---------|--------|-----------|
+| `node clear-all-data.js` | Delete all data | ⚠️ High |
+| `node clear-properties.js` | Delete properties only | ⚠️ Medium |
+| `node clear-transactions.js` | Delete transactions only | ⚠️ Medium |
+| `node restore-database.js` | Recover from backup | ✅ Safe |
+
+### Important Features
+
+✅ **Automatic Backups** - Backups created automatically before deletion  
+✅ **Confirmation Prompts** - Must type specific code to confirm deletion  
+✅ **Restoration Tools** - Restore from any previous backup  
+✅ **Detailed Logging** - All operations logged with timestamps  
+
+### Usage Example
+
+```bash
+cd backend
+
+# Delete properties (with backup & confirmation)
+node clear-properties.js
+# Type: DELETE_PROPERTIES to confirm
+
+# Restore from backup
+node restore-database.js
+# Select backup number from list
+# Choose to clear existing data or merge
+```
+
+**For detailed instructions, see:** [`backend/DATABASE-MANAGEMENT.md`](./backend/DATABASE-MANAGEMENT.md)
+
+### Key Locations
+
+- **Backups:** `/backend/backups/` (auto-created, not in git)
+- **Logs:** `/backend/backups/deletion-log-*.txt`
+- **Guide:** `/backend/DATABASE-MANAGEMENT.md`
+
 ## 🌍 Multilingual Support
 
 All applications support three languages:
@@ -266,6 +309,7 @@ See individual `package.json` files in each folder
 ## 📖 Documentation
 
 - [Landing Page README](./landing/README.md)
+- [Database Management Guide](./backend/DATABASE-MANAGEMENT.md)
 - [Frontend README](./frontend/README.md) (if exists)
 - [Backend README](./backend/README.md) (if exists)
 

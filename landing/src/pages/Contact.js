@@ -48,22 +48,22 @@ function Contact() {
               
               <div className="info-card">
                 <h3>📍 {t('contact.addressLabel')}</h3>
-                <p>123 Real Estate Street<br />Ho Chi Minh City, Vietnam</p>
+                <p>Nguyễn Tuân, phường Thanh Xuân<br />T.P Hà Nội, Vietnam</p>
               </div>
 
               <div className="info-card">
                 <h3>📞 {t('contact.phoneLabel')}</h3>
-                <p>+84 (0) 123 456 789</p>
+                <p>+84916345323</p>
               </div>
 
               <div className="info-card">
                 <h3>✉️ {t('contact.emailLabel')}</h3>
-                <p>info@homebuy.vn</p>
+                <p>Homebuy@gmail.com</p>
               </div>
 
               <div className="info-card">
                 <h3>🕐 {t('contact.hoursLabel')}</h3>
-                <p>{t('contact.hours')}</p>
+                <p>Thứ Hai - Thứ Sáu: 8:00 - 18:00<br />Thứ Bảy: 9:00 - 17:00<br />Chủ Nhật: Nghỉ</p>
               </div>
             </div>
 
@@ -132,6 +132,24 @@ function Contact() {
                 </button>
               </form>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="contact-map">
+        <div className="container">
+          <h2>{t('contact.mapTitle') || 'Vị Trí Của Chúng Tôi'}</h2>
+          <div className="map-container">
+            <iframe
+              title="thanh-xuan-map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.9294877481323!2d105.82969072346906!3d21.024543780652597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab7c5f5de5f5%3A0x123a4b5c6d7e8f9g!2sTh%C3%A0nh%20Xu%C3%A2n%2C%20Ha%20Noi!5e0!3m2!1svi!2svn!4v1234567890123"
+              width="100%"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
       </section>

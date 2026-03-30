@@ -165,8 +165,8 @@ function AppContent() {
 
             <div className="footer-section">
               <h4>{t('footer.contactTitle')}</h4>
-              <p>Email: contact@realestate.com</p>
-              <p>Điện thoại: (84) 1234 567 890</p>
+              <p>Email: Homebuy@gmail.com</p>
+              <p>Điện thoại: (84) 916345323</p>
             </div>
 
             <div className="footer-section">

@@ -75,9 +75,16 @@ function Contact() {
 
             {/* Map Placeholder */}
             <div className="contact-map">
-              <div className="map-placeholder">
-                <p>{t('contact.mapPlaceholder')}</p>
-              </div>
+              <iframe
+                title="thanh-xuan-map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.9294877481323!2d105.82969072346906!3d21.024543780652597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab7c5f5de5f5%3A0x123a4b5c6d7e8f9g!2sThnh%20Xun%2C%20Ha%20Noi!5e0!3m2!1svi!2svn!4v1234567890123"
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </section>
 

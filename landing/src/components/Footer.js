@@ -35,6 +35,15 @@ function Footer() {
             <li><a href="#instagram">Instagram</a></li>
           </ul>
         </div>
+
+        <div className="footer-section">
+          <h4>{t('footer.contact')}</h4>
+          <ul>
+            <li><a href="mailto:Homebuy@gmail.com">Email: Homebuy@gmail.com</a></li>
+            <li><a href="tel:+84916345323">Điện thoại: +84916345323</a></li>
+            <li>Nguyễn Tuân, phường Thanh Xuân<br />T.P Hà Nội</li>
+          </ul>
+        </div>
       </div>
 
       <div className="footer-bottom">

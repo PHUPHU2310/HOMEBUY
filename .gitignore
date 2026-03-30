@@ -21,6 +21,10 @@ yarn.lock
 /backend/uploads/
 uploads/
 
+# Database Backups
+/backend/backups/
+backups/
+
 # IDE
 .vscode/
 .idea/

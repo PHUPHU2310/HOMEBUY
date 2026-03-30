@@ -3,8 +3,8 @@ import './Home.css';
 
 function Home() {
   const handleGoToApp = () => {
-    // Chuyển sang port 3000 (frontend app)
-    window.location.href = 'http://localhost:3000';
+    // Chuyển sang port 3001 (frontend app)
+    window.location.href = 'http://localhost:3001';
   };
 
   return (
