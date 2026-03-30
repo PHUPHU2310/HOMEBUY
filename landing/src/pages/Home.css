@@ -1,0 +1,220 @@
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Full screen layout */
+.home {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 50%, #5a5a5a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Decorations */
+.bg-decoration {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.15;
+}
+
+.bg-decoration.top-left {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #1ba330 0%, transparent 70%);
+  top: -150px;
+  left: -150px;
+  filter: blur(60px);
+}
+
+.bg-decoration.bottom-right {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, #1ba330 0%, transparent 70%);
+  bottom: -100px;
+  right: -100px;
+  filter: blur(60px);
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  z-index: 10;
+  text-align: center;
+}
+
+/* House/Logo Icon */
+.logo-container {
+  width: 280px;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 3s ease-in-out infinite;
+}
+
+.logo-icon {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* HOMEBUY Title */
+.homebuy-title {
+  font-size: 72px;
+  font-weight: 800;
+  color: #d97634;
+  letter-spacing: 4px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  margin: 10px 0;
+}
+
+/* Welcome Box - Clickable Link */
+.welcome-box {
+  background-color: #1ba330;
+  padding: 18px 40px;
+  border-radius: 6px;
+  min-width: 280px;
+  box-shadow: 0 8px 25px rgba(27, 163, 48, 0.4);
+  animation: slideUp 0.6s ease 0.3s both;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.welcome-box:hover {
+  background-color: #1b7c38;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(27, 163, 48, 0.6);
+}
+
+.welcome-box p {
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.welcome-box p:first-child {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .house-container {
+    width: 180px;
+    height: 170px;
+  }
+
+  .homebuy-title {
+    font-size: 48px;
+    letter-spacing: 2px;
+  }
+
+  .welcome-box {
+    padding: 14px 30px;
+    min-width: 220px;
+  }
+
+  .welcome-box p {
+    font-size: 15px;
+  }
+
+  .welcome-box p:first-child {
+    font-size: 17px;
+  }
+
+  .cta-button {
+    padding: 14px 40px;
+    font-size: 16px;
+  }
+
+  .bg-decoration.top-left {
+    width: 250px;
+    height: 250px;
+  }
+
+  .bg-decoration.bottom-right {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .house-container {
+    width: 140px;
+    height: 130px;
+  }
+
+  .homebuy-title {
+    font-size: 36px;
+    letter-spacing: 1px;
+  }
+
+  .welcome-box {
+    padding: 12px 25px;
+    min-width: 200px;
+  }
+
+  .welcome-box p {
+    font-size: 13px;
+  }
+
+  .welcome-box p:first-child {
+    font-size: 15px;
+  }
+
+  .cta-button {
+    padding: 12px 30px;
+    font-size: 14px;
+  }
+}

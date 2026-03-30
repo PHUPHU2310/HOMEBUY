@@ -1,0 +1,387 @@
+.property-detail {
+  padding: 20px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.back-button {
+  background-color: #1ba330;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-bottom: 20px;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #004a99;
+}
+
+.property-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Gallery */
+.property-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gallery-main {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+}
+
+.gallery-main img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1.5em;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.gallery-btn:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.gallery-btn.prev {
+  left: 10px;
+}
+
+.gallery-btn.next {
+  right: 10px;
+}
+
+.gallery-counter {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.gallery-thumbnails {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.gallery-thumbnails img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.3s;
+}
+
+.gallery-thumbnails img.active {
+  border-color: #1ba330;
+}
+
+/* Property Info */
+.property-info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.property-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.property-header h1 {
+  margin: 0;
+  font-size: 2em;
+  color: #333;
+}
+
+.property-location {
+  color: #666;
+  margin: 10px 0 0 0;
+  font-size: 1.1em;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.edit-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.edit-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 86, 179, 0.3);
+}
+
+.favorite-btn {
+  background-color: #f0f0f0;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.favorite-btn:hover {
+  background-color: #ffe0e0;
+}
+
+.favorite-btn.active {
+  color: #e74c3c;
+  background-color: #ffe0e0;
+}
+
+.property-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-left: 4px solid #1ba330;
+  border-radius: 4px;
+}
+
+.price {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #1ba330;
+}
+
+.status {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.status.available {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status.sold {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status.rented {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+.status.under\ review {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+/* Features */
+.property-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.feature {
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.feature .label {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 5px;
+}
+
+.feature .value {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Description */
+.property-description {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+.property-description h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.property-description p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Amenities */
+.property-amenities {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+.property-amenities h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.property-amenities ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.property-amenities li {
+  color: #666;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.property-amenities li:last-child {
+  border-bottom: none;
+}
+
+/* Owner Info */
+.property-owner {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+.property-owner h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.owner-info p {
+  margin: 10px 0;
+  color: #666;
+}
+
+.owner-name-clickable {
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s;
+  font-weight: 600;
+}
+
+.owner-name-clickable:hover {
+  color: #0056b3;
+}
+
+.contact-btn {
+  background-color: #667eea;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-top: 15px;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.contact-btn:hover {
+  background-color: #764ba2;
+}
+
+/* Loading & Error */
+.property-loading,
+.property-error {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2em;
+  color: #666;
+  background: white;
+  border-radius: 8px;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+.property-error {
+  color: #e74c3c;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .property-detail-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 15px;
+  }
+
+  .gallery-main img {
+    height: 250px;
+  }
+
+  .property-header h1 {
+    font-size: 1.5em;
+  }
+
+  .price {
+    font-size: 1.4em;
+  }
+
+  .property-features {
+    grid-template-columns: 1fr;
+  }
+}
+
+

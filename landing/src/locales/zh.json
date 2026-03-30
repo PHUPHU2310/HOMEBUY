@@ -1,0 +1,49 @@
+{
+  "common": {
+    "home": "首页",
+    "contact": "联系我们",
+    "app": "发布房产"
+  },
+  "home": {
+    "heroTitle": "欢迎来到 HOMEBUY",
+    "heroSubtitle": "越南领先的房地产平台",
+    "aboutTitle": "关于 HOMEBUY",
+    "aboutDesc1": "HOMEBUY 是领先的房地产平台，拥有超过 10 年的行业经验。我们已经帮助数万名客户找到他们梦想的家园和房产。",
+    "aboutDesc2": "凭借尖端技术、敬业的专家团队和对客户的承诺，HOMEBUY 是您房地产需求的最值得信赖的选择。",
+    "aboutPoint1": "在房地产行业拥有超过 10 年的经验",
+    "aboutPoint2": "全国超过 50,000 名满意客户",
+    "aboutPoint3": "每月列出 10,000+ 房产",
+    "ctaButton": "探索项目"
+  },
+  "contact": {
+    "title": "联系我们",
+    "subtitle": "我们很乐意听到您的意见。请给我们发送消息",
+    "infoTitle": "联系信息",
+    "addressLabel": "地址",
+    "phoneLabel": "电话",
+    "emailLabel": "电子邮件",
+    "hoursLabel": "工作时间",
+    "hours": "周一 - 周五: 9:00 - 18:00 | 周六: 9:00 - 12:00",
+    "formTitle": "发送消息",
+    "nameLabel": "您的名字",
+    "namePlaceholder": "输入您的全名",
+    "emailPlaceholder": "输入您的电子邮件",
+    "phonePlaceholder": "输入您的电话号码",
+    "messageLabel": "消息",
+    "messagePlaceholder": "在此输入您的消息...",
+    "submitButton": "发送消息",
+    "successMessage": "谢谢! 我们会尽快与您联系"
+  },
+  "footer": {
+    "company": "公司",
+    "about": "关于我们",
+    "services": "服务",
+    "contact": "联系",
+    "support": "支持",
+    "help": "帮助",
+    "faq": "常见问题",
+    "feedback": "反馈",
+    "connect": "连接",
+    "rights": "版权所有 © HOMEBUY。版权所有。"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "common": {
+    "home": "Home",
+    "contact": "Contact",
+    "app": "Post Property"
+  },
+  "home": {
+    "heroTitle": "WELCOME TO HOMEBUY",
+    "heroSubtitle": "Vietnam's Leading Real Estate Platform",
+    "aboutTitle": "About HOMEBUY",
+    "aboutDesc1": "HOMEBUY is the leading real estate platform with over 10 years of experience in the industry. We have helped tens of thousands of customers find their dream homes and properties.",
+    "aboutDesc2": "With cutting-edge technology, a dedicated team of experts, and a commitment to our customers, HOMEBUY is the most trusted choice for your real estate needs.",
+    "aboutPoint1": "Over 10 years of experience in the real estate industry",
+    "aboutPoint2": "50,000+ satisfied customers nationwide",
+    "aboutPoint3": "10,000+ properties listed monthly",
+    "ctaButton": "EXPLORE PROJECT"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We'd love to hear from you. Send us a message",
+    "infoTitle": "Contact Information",
+    "addressLabel": "Address",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "hoursLabel": "Working Hours",
+    "hours": "Mon - Fri: 9:00 - 18:00 | Sat: 9:00 - 12:00",
+    "formTitle": "Send a Message",
+    "nameLabel": "Your Name",
+    "namePlaceholder": "Enter your full name",
+    "emailPlaceholder": "Enter your email",
+    "phonePlaceholder": "Enter your phone number",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Enter your message here...",
+    "submitButton": "Send Message",
+    "successMessage": "Thank you! We will contact you as soon as possible"
+  },
+  "footer": {
+    "company": "Company",
+    "about": "About Us",
+    "services": "Services",
+    "contact": "Contact",
+    "support": "Support",
+    "help": "Help",
+    "faq": "FAQ",
+    "feedback": "Feedback",
+    "connect": "Connect",
+    "rights": "Copyright © HOMEBUY. All Rights Reserved."
+  }
+}

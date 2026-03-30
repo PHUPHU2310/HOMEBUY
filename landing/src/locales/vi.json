@@ -1,0 +1,49 @@
+{
+  "common": {
+    "home": "Trang Chủ",
+    "contact": "Liên Hệ",
+    "app": "Đăng tải"
+  },
+  "home": {
+    "heroTitle": "CHÀO MỪNG BẠN ĐẾN VỚI HOMEBUY",
+    "heroSubtitle": "Nền Tảng Bất Động Sản Hàng Đầu Việt Nam",
+    "aboutTitle": "Về HOMEBUY",
+    "aboutDesc1": "HOMEBUY là nền tảng bất động sản hàng đầu với hơn 10 năm kinh nghiệm trong ngành. Chúng tôi đã giúp hàng chục nghìn khách hàng tìm được ngôi nhà và tài sản của mơ ước.",
+    "aboutDesc2": "Với công nghệ tiên tiến, đội ngũ chuyên gia tận tụy, và sự cam kết với khách hàng, HOMEBUY là lựa chọn tin cậy nhất cho nhu cầu bất động sản của bạn.",
+    "aboutPoint1": "Hơn 10 năm kinh nghiệm trong ngành bất động sản",
+    "aboutPoint2": "50,000+ khách hàng hài lòng trên toàn quốc",
+    "aboutPoint3": "10,000+ tài sản được liệt kê hàng tháng",
+    "ctaButton": "KHÁM PHÁ DỰ ÁN"
+  },
+  "contact": {
+    "title": "Liên Hệ Với Chúng Tôi",
+    "subtitle": "Chúng tôi rất vui được nghe từ bạn. Hãy gửi tin nhắn cho chúng tôi",
+    "infoTitle": "Thông Tin Liên Hệ",
+    "addressLabel": "Địa Chỉ",
+    "phoneLabel": "Điện Thoại",
+    "emailLabel": "Email",
+    "hoursLabel": "Giờ Làm Việc",
+    "hours": "Thứ 2 - Thứ 6: 9:00 - 18:00 | Thứ 7: 9:00 - 12:00",
+    "formTitle": "Gửi Tin Nhắn",
+    "nameLabel": "Tên Của Bạn",
+    "namePlaceholder": "Nhập tên đầy đủ của bạn",
+    "emailPlaceholder": "Nhập email của bạn",
+    "phonePlaceholder": "Nhập số điện thoại của bạn",
+    "messageLabel": "Tin Nhắn",
+    "messagePlaceholder": "Nhập tin nhắn của bạn ở đây...",
+    "submitButton": "Gửi Tin Nhắn",
+    "successMessage": "Cảm ơn bạn! Chúng tôi sẽ liên hệ với bạn sớm nhất"
+  },
+  "footer": {
+    "company": "Công Ty",
+    "about": "Về Chúng Tôi",
+    "services": "Dịch Vụ",
+    "contact": "Liên Hệ",
+    "support": "Hỗ Trợ",
+    "help": "Trợ Giúp",
+    "faq": "Câu Hỏi Thường Gặp",
+    "feedback": "Phản Hồi",
+    "connect": "Kết Nối",
+    "rights": "Bản Quyền Thuộc Về HOMEBUY. Tất Cả Quyền Được Bảo Lưu."
+  }
+}
