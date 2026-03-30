@@ -33,6 +33,9 @@ function PropertyEdit() {
     amenities: '',
   });
 
+  const [newImages, setNewImages] = useState([]);
+  const [currentImages, setCurrentImages] = useState([]);
+
   useEffect(() => {
     const fetchProperty = async () => {
       try {
@@ -47,6 +50,7 @@ function PropertyEdit() {
         }
 
         setProperty(prop);
+        setCurrentImages(prop.images || []);
         setFormData({
           title: prop.title || '',
           description: prop.description || '',
@@ -79,6 +83,21 @@ function PropertyEdit() {
     });
   };
 
+  const handleImageChange = (e) => {
+    const files = Array.from(e.target.files);
+    setNewImages([...newImages, ...files]);
+  };
+
+  const handleDeleteCurrentImage = (index) => {
+    const updatedImages = currentImages.filter((_, i) => i !== index);
+    setCurrentImages(updatedImages);
+  };
+
+  const handleDeleteNewImage = (index) => {
+    const updatedImages = newImages.filter((_, i) => i !== index);
+    setNewImages(updatedImages);
+  };
+
   const handleSave = async (e) => {
     e.preventDefault();
     
@@ -86,25 +105,37 @@ function PropertyEdit() {
       setIsSaving(true);
       setError(null);
 
-      const updateData = {
-        title: formData.title,
-        description: formData.description,
-        type: formData.type,
-        status: formData.status,
-        price: parseInt(formData.price) || 0,
-        area: parseInt(formData.area) || 0,
-        bedrooms: parseInt(formData.bedrooms) || 0,
-        bathrooms: parseInt(formData.bathrooms) || 0,
-        location: {
-          city: formData.city,
-          district: formData.district,
-          address: formData.address,
-        },
-        amenities: formData.amenities
+      // Prepare FormData for submission with images
+      const submitFormData = new FormData();
+      submitFormData.append('title', formData.title);
+      submitFormData.append('description', formData.description);
+      submitFormData.append('type', formData.type);
+      submitFormData.append('status', formData.status);
+      submitFormData.append('location', JSON.stringify({
+        city: formData.city,
+        district: formData.district,
+        address: formData.address,
+      }));
+      submitFormData.append('price', parseInt(formData.price) || 0);
+      submitFormData.append('area', parseInt(formData.area) || 0);
+      submitFormData.append('bedrooms', parseInt(formData.bedrooms) || 0);
+      submitFormData.append('bathrooms', parseInt(formData.bathrooms) || 0);
+      submitFormData.append('amenities', JSON.stringify(
+        formData.amenities
           .split(',')
           .map((a) => a.trim())
-          .filter((a) => a),
-      };
+          .filter((a) => a)
+      ));
+      
+      // Add kept images
+      submitFormData.append('keptImages', JSON.stringify(currentImages));
+
+      // Add new image files
+      if (newImages && newImages.length > 0) {
+        newImages.forEach((image) => {
+          submitFormData.append('images', image);
+        });
+      }
 
       // Check if status changed from "available" to "sold" or "rented"
       const oldStatus = property.status?.toLowerCase();
@@ -114,7 +145,7 @@ function PropertyEdit() {
                            (newStatus === 'sold' || newStatus === 'rented');
 
       // Update property first
-      await propertyService.updateProperty(id, updateData);
+      await propertyService.updateProperty(id, submitFormData);
 
       // If status changed to sold/rented, create transaction record
       if (statusChanged) {
@@ -390,6 +421,74 @@ function PropertyEdit() {
                   rows="2"
                   className="form-textarea"
                 ></textarea>
+              </div>
+            </div>
+
+            {/* Images Management */}
+            <div className="form-section">
+              <h3>Quản Lý Hình Ảnh</h3>
+
+              {/* Current Images */}
+              {currentImages && currentImages.length > 0 && (
+                <div className="images-subsection">
+                  <h4>Hình Ảnh Hiện Tại ({currentImages.length})</h4>
+                  <div className="images-grid">
+                    {currentImages.map((img, idx) => (
+                      <div key={idx} className="image-item">
+                        <img src={img} alt={`Property ${idx + 1}`} />
+                        <button
+                          type="button"
+                          className="delete-image-btn"
+                          onClick={() => handleDeleteCurrentImage(idx)}
+                          title="Xóa ảnh này"
+                        >
+                          ✕
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* New Images Upload */}
+              <div className="images-subsection">
+                <div className="form-group">
+                  <label htmlFor="images">Thêm Ảnh Mới</label>
+                  <input
+                    type="file"
+                    id="images"
+                    multiple
+                    accept="image/*"
+                    onChange={handleImageChange}
+                    className="file-input"
+                  />
+                  <small>Chọn 1 hoặc nhiều ảnh để thêm vào</small>
+                </div>
+
+                {/* Preview New Images */}
+                {newImages && newImages.length > 0 && (
+                  <div className="images-grid">
+                    <div className="images-count">
+                      📸 {newImages.length} ảnh đã chọn thêm
+                    </div>
+                    {newImages.map((img, idx) => (
+                      <div key={idx} className="image-item">
+                        <img 
+                          src={URL.createObjectURL(img)} 
+                          alt={`New ${idx + 1}`} 
+                        />
+                        <button
+                          type="button"
+                          className="delete-image-btn new-image-btn"
+                          onClick={() => handleDeleteNewImage(idx)}
+                          title="Hủy ảnh này"
+                        >
+                          ✕
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
 

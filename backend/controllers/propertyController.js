@@ -67,19 +67,67 @@ exports.updateProperty = async (req, res) => {
       return res.status(403).json({ message: 'Không có quyền chỉnh sửa bất động sản này' });
     }
 
-    // Process new uploaded images if any
-    const imageUrls = [...property.images]; // Keep existing images
+    // Process images
+    let imageUrls = [];
+    
+    // Add kept images (if provided by frontend)
+    if (req.body.keptImages) {
+      try {
+        const keptImages = JSON.parse(req.body.keptImages);
+        if (Array.isArray(keptImages)) {
+          imageUrls = [...keptImages];
+        }
+      } catch (e) {
+        // If parsing fails, keep existing images
+        imageUrls = [...property.images];
+      }
+    } else {
+      // Fallback to keeping existing images if keptImages is not provided
+      imageUrls = [...property.images];
+    }
+
+    // Add new uploaded images if any
     if (req.files && req.files.length > 0) {
       req.files.forEach(file => {
         imageUrls.push(`/uploads/${file.filename}`);
       });
     }
 
-    // Update property data
-    Object.assign(property, req.body);
-    property.images = imageUrls;
-    property.updatedAt = Date.now();
-    
+    // Prepare update data
+    const updateData = {
+      title: req.body.title || property.title,
+      description: req.body.description || property.description,
+      type: req.body.type || property.type,
+      status: req.body.status || property.status,
+      price: req.body.price !== undefined ? req.body.price : property.price,
+      area: req.body.area !== undefined ? req.body.area : property.area,
+      bedrooms: req.body.bedrooms !== undefined ? req.body.bedrooms : property.bedrooms,
+      bathrooms: req.body.bathrooms !== undefined ? req.body.bathrooms : property.bathrooms,
+      images: imageUrls,
+      updatedAt: Date.now(),
+    };
+
+    // Handle location
+    if (req.body.location) {
+      try {
+        const location = JSON.parse(req.body.location);
+        updateData.location = location;
+      } catch (e) {
+        updateData.location = property.location;
+      }
+    }
+
+    // Handle amenities
+    if (req.body.amenities) {
+      try {
+        updateData.amenities = JSON.parse(req.body.amenities);
+      } catch (e) {
+        updateData.amenities = property.amenities;
+      }
+    }
+
+    // Update property
+    Object.assign(property, updateData);
     const updatedProperty = await property.save();
     await updatedProperty.populate('owner', 'name email');
     res.json(updatedProperty);
