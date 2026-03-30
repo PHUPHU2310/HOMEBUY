@@ -36,6 +36,10 @@ const propertySchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
+  sellerPhone: {
+    type: String,
+    description: 'Seller phone number',
+  },
   status: {
     type: String,
     enum: ['available', 'sold', 'rented', 'under-review'],

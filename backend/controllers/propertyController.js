@@ -40,6 +40,7 @@ exports.createProperty = async (req, res) => {
       ...req.body,
       owner: req.user.id,
       images: imageUrls,
+      sellerPhone: req.body.sellerPhone || '',
     };
 
     const property = new Property(propertyData);
@@ -104,6 +105,7 @@ exports.updateProperty = async (req, res) => {
       bedrooms: req.body.bedrooms !== undefined ? req.body.bedrooms : property.bedrooms,
       bathrooms: req.body.bathrooms !== undefined ? req.body.bathrooms : property.bathrooms,
       images: imageUrls,
+      sellerPhone: req.body.sellerPhone !== undefined ? req.body.sellerPhone : property.sellerPhone,
       updatedAt: Date.now(),
     };
 

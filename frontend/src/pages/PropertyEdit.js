@@ -31,6 +31,7 @@ function PropertyEdit() {
     district: '',
     address: '',
     amenities: '',
+    sellerPhone: '',
   });
 
   const [newImages, setNewImages] = useState([]);
@@ -64,6 +65,7 @@ function PropertyEdit() {
           district: prop.location?.district || '',
           address: prop.location?.address || '',
           amenities: prop.amenities?.join(', ') || '',
+          sellerPhone: prop.sellerPhone || '',
         });
         setLoading(false);
       } catch (err) {
@@ -126,6 +128,7 @@ function PropertyEdit() {
           .map((a) => a.trim())
           .filter((a) => a)
       ));
+      submitFormData.append('sellerPhone', formData.sellerPhone);
       
       // Add kept images
       submitFormData.append('keptImages', JSON.stringify(currentImages));
@@ -421,6 +424,25 @@ function PropertyEdit() {
                   rows="2"
                   className="form-textarea"
                 ></textarea>
+              </div>
+            </div>
+
+            {/* Contact Information */}
+            <div className="form-section">
+              <h3>Thông Tin Liên Hệ</h3>
+
+              <div className="form-group">
+                <label htmlFor="sellerPhone">Điện Thoại Người Bán</label>
+                <input
+                  type="tel"
+                  id="sellerPhone"
+                  name="sellerPhone"
+                  value={formData.sellerPhone}
+                  onChange={handleInputChange}
+                  placeholder="VD: +84912345678"
+                  className="form-input"
+                />
+                <small>Số điện thoại sẽ được hiển thị cho người quan tâm</small>
               </div>
             </div>
 

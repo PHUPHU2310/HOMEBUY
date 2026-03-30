@@ -33,6 +33,7 @@ function PropertyUpload() {
     bedrooms: '',
     bathrooms: '',
     amenities: '',
+    sellerPhone: '',
     images: [],
   });
 
@@ -92,6 +93,7 @@ function PropertyUpload() {
           ? formData.amenities.split(',').map((a) => a.trim())
           : []
       ));
+      submitFormData.append('sellerPhone', formData.sellerPhone);
       submitFormData.append('status', 'available');
 
       // Add image files
@@ -120,6 +122,7 @@ function PropertyUpload() {
           bedrooms: '',
           bathrooms: '',
           amenities: '',
+          sellerPhone: '',
           images: [],
         });
 
@@ -335,6 +338,24 @@ function PropertyUpload() {
                 rows={3}
               />
               <small>{t('upload.amenitiesHelp')}</small>
+            </div>
+          </fieldset>
+
+          {/* Contact Information */}
+          <fieldset className="form-section">
+            <legend>Thông tin liên hệ</legend>
+
+            <div className="form-group">
+              <label>Điện thoại người bán *</label>
+              <input
+                type="tel"
+                name="sellerPhone"
+                value={formData.sellerPhone}
+                onChange={handleInputChange}
+                placeholder="Nhập số điện thoại của bạn"
+                required
+              />
+              <small>Số điện thoại sẽ được hiển thị cho người quan tâm</small>
             </div>
           </fieldset>
 

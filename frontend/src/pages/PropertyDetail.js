@@ -195,6 +195,9 @@ function PropertyDetail() {
                   </span>
                 </p>
                 <p><strong>Email:</strong> {property.owner.email}</p>
+                {property.sellerPhone && (
+                  <p><strong>📞 Điện thoại:</strong> {property.sellerPhone}</p>
+                )}
                 <button 
                   className="contact-btn"
                   onClick={() => navigate(`/user/${property.owner._id}`)}
