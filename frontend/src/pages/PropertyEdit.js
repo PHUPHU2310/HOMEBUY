@@ -145,6 +145,32 @@ function PropertyEdit() {
     }
   };
 
+  const handleDelete = async () => {
+    const confirmed = window.confirm(
+      '⚠️ Xác nhận xóa bất động sản này?\n\nHành động này không thể hoàn tác!'
+    );
+
+    if (!confirmed) return;
+
+    try {
+      setIsSaving(true);
+      setError(null);
+
+      // Delete the property
+      await propertyService.deleteProperty(id);
+
+      setSuccessMessage('✅ Bất động sản đã được xóa thành công!');
+      
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
+    } catch (err) {
+      setError(err.response?.data?.message || 'Không thể xóa bất động sản');
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
   if (loading) {
     return <div className="edit-loading">Đang tải...</div>;
   }
@@ -379,6 +405,15 @@ function PropertyEdit() {
                 disabled={isSaving}
               >
                 Hủy
+              </button>
+              <button
+                type="button"
+                className="btn btn-danger"
+                onClick={handleDelete}
+                disabled={isSaving}
+                title="Xóa bất động sản này vĩnh viễn"
+              >
+                🗑️ Xóa bất động sản
               </button>
             </div>
           </form>

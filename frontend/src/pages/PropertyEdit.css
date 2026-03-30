@@ -170,6 +170,18 @@
   box-shadow: 0 4px 8px rgba(90, 98, 104, 0.3);
 }
 
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+  margin-left: auto;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: #c82333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(200, 35, 51, 0.3);
+}
+
 .btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
