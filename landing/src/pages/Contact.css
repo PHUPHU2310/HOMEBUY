@@ -142,6 +142,25 @@
   font-weight: 500;
 }
 
+.error-message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 15px 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  border-left: 4px solid #dc3545;
+  animation: slideDown 0.3s ease;
+}
+
+.error-message p {
+  margin: 0;
+  font-weight: 500;
+}
+
 @keyframes slideDown {
   from {
     opacity: 0;

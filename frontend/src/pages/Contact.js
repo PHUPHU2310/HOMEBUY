@@ -12,6 +12,8 @@ function Contact() {
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,11 +23,27 @@ function Contact() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError('');
     
-    setTimeout(() => {
+    try {
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to send message');
+      }
+
+      setSubmitted(true);
       setFormData({
         name: '',
         email: '',
@@ -33,8 +51,16 @@ function Contact() {
         subject: '',
         message: '',
       });
-      setSubmitted(false);
-    }, 3000);
+      
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+    } catch (err) {
+      console.error('Error sending message:', err);
+      setError(err.message || 'Failed to send message. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -95,6 +121,11 @@ function Contact() {
             {submitted && (
               <div className="success-message">
                 {t('contact.successMessage')}
+              </div>
+            )}
+            {error && (
+              <div className="error-message">
+                {error}
               </div>
             )}
 
@@ -167,8 +198,8 @@ function Contact() {
                 />
               </div>
 
-              <button type="submit" className="submit-button">
-                {t('contact.submitButton')}
+              <button type="submit" className="submit-button" disabled={loading}>
+                {loading ? 'Đang gửi...' : t('contact.submitButton')}
               </button>
             </form>
           </section>

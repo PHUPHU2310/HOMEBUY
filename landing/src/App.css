@@ -42,6 +42,12 @@ button {
   box-shadow: 0 6px 16px rgba(27, 163, 48, 0.4);
 }
 
+.btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;

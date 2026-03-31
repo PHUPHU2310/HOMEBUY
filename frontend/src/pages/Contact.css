@@ -113,6 +113,15 @@
   border-left: 4px solid #1ba330;
 }
 
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  border-left: 4px solid #dc3545;
+}
+
 /* Form Styles */
 .contact-form {
   display: flex;
@@ -179,6 +188,12 @@
 .submit-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 20px rgba(27, 163, 48, 0.4);
+}
+
+.submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
 }
 
 /* FAQ Section */

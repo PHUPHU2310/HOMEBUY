@@ -59,6 +59,7 @@ mongoose.connect(mongoURI, {
 const propertyRoutes = require('./routes/properties');
 const authRoutes = require('./routes/auth');
 const transactionRoutes = require('./routes/transactions');
+const contactRoutes = require('./routes/contact');
 
 // Routes
 app.get('/', (req, res) => {
@@ -73,6 +74,7 @@ app.get('/api/health', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/properties', propertyRoutes);
 app.use('/api/transactions', transactionRoutes);
+app.use('/api/contact', contactRoutes);
 
 // Start server
 const PORT = process.env.PORT || 5000;
